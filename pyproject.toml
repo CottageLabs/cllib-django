@@ -1,0 +1,17 @@
+[project]
+name = "cllib-django"
+version = "0.0.1"
+requires-python = ">=3.12"
+classifiers = [ 
+    "Programming Language :: Python :: 3", 
+    "License :: OSI Approved :: MIT License",
+]
+dependencies = []
+[[project.authors]]
+name = "seabird64"
+
+[build-system]
+requires = [ "setuptools",]
+build-backend = "setuptools.build_meta"
+
+[project.scripts]
