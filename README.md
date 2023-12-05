@@ -1,0 +1,1 @@
+Reuseable module for django
