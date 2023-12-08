@@ -109,3 +109,7 @@ def load_cache(key, data_fn, expires=10800):
         result = data_fn()
         cache.set(key, result, expires)
     return result
+
+
+def create_eq_query(field, value) -> Q:
+    return Q(**{field: value})
