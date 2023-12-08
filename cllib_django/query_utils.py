@@ -33,12 +33,17 @@ def join_fields(parent_field: str, child_fields: Iterable[str]) -> Iterable[str]
     )
 
 
+def concat_queries(queries: Iterable[Q], conn_type=Q.OR) -> Q:
+    concat_fn = (lambda a, b: a | b) if conn_type == Q.OR else (lambda a, b: a & b)
+    return functools.reduce(concat_fn, queries, Q())
+
+
 def any_queries_match(queries: Iterable[Q]) -> Q:
-    return functools.reduce(lambda a, b: a | b, queries, Q())
+    return concat_queries(queries, Q.OR)
 
 
 def all_queries_match(queries: Iterable[Q]) -> Q:
-    return functools.reduce(lambda a, b: a & b, queries, Q())
+    return concat_queries(queries, Q.AND)
 
 
 def run_lookup_fn(_fn, _field, _val):
