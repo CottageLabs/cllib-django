@@ -46,7 +46,7 @@ def all_queries_match(queries: Iterable[Q]) -> Q:
     return concat_queries(queries, Q.AND)
 
 
-def run_lookup_fn(_fn, _field, _val):
+def run_lookup_fn(_fn, _field, _val) -> Q:
     if (isinstance(_fn, type)
             and issubclass(_fn, Lookup)
             and not isinstance(_field, F)):
